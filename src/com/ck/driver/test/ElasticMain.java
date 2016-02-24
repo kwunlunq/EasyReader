@@ -11,25 +11,25 @@ public class ElasticMain {
 	public static SearchArticleServiceImpl articleService = new SearchArticleServiceImpl();
 
 	public static void main(String[] args) throws Exception {
-		
+
+		// ApplicationContext context = new ClassPathXmlApplicationContext( "Beans.xml");
+
 		testSave();
 
 		ElasticUtil.closeClient();
 		System.out.println("finished.");
 	}
-	
-	
+
 	public static void testSave() {
-		
+
 		articleService.updateArticles();
-		
+
 		List<Article> articles = articleService.getAll();
-		
+
 		for (int i = 0; i < articles.size(); i++) {
 			System.out.println(i + ". " + articles.get(i).getTitle());
 		}
-		
+
 	}
-	
 
 }

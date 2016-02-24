@@ -11,6 +11,7 @@ import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ck.pojo.Article;
 import com.ck.utils.ElasticUtil;
@@ -19,7 +20,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class SearchArticleServiceImpl implements SearchArticleService {
 	
 	Client client = ElasticUtil.getClient();
-	CrawlArticleServiceImpl crawlService = new CrawlArticleServiceImpl();
+	
+	@Autowired
+	private CrawlArticleService crawlService;
+	//CrawlArticleServiceImpl crawlService = new CrawlArticleServiceImpl();
 
 	private static String INDEX = "es";
 	private static String TYPE = "article";
