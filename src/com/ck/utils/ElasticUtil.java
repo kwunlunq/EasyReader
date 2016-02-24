@@ -30,7 +30,7 @@ public class ElasticUtil {
 								.addTransportAddress(new InetSocketTransportAddress(
 												InetAddress.getByName("127.0.0.1"), 9300));
 						client = tmpClient;
-						System.out.println("Client create success.");
+						System.out.println("ES Client create success.");
 					} catch (UnknownHostException e) {
 						e.printStackTrace();
 					}
@@ -60,8 +60,8 @@ public class ElasticUtil {
 	 * @param obj
 	 * @return bool : isCreated
 	 */
-	public static boolean createIndex(String index, String type, byte[] obj) {
-		IndexResponse resp = client.prepareIndex(index, type).setSource(obj).get();
+	public static boolean createIndex(String index, String type, byte[] json) {
+		IndexResponse resp = client.prepareIndex(index, type).setSource(json).get();
 		return resp.isCreated();
 	}
 	
@@ -78,5 +78,6 @@ public class ElasticUtil {
 			client.close();
 			client = null;
 		}
+		System.out.println("ES Client closed");
 	}
 }

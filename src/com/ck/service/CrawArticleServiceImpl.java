@@ -16,14 +16,31 @@ import org.jsoup.nodes.Element;
 import com.ck.pojo.Article;
 
 public class CrawArticleServiceImpl {
-	
-	public  List<Article> updateArticles() throws Exception {
-		List<Article> articles = queryArticleTitle();
-		articles = queryArticleContent(articles);
+
+	/**
+	 * 到網站上擷取資料
+	 * @return List<Article>
+	 */
+	public List<Article> crawlArticles() {
+		
+		System.out.println("開始擷取資料...");
+		
+		List<Article> articles = null;
+		long s = System.currentTimeMillis();
+		
+		try {
+			articles = queryArticleTitle();
+			articles = queryArticleContent(articles);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("擷取完成：共" + articles.size() + "筆, 花費" + (System.currentTimeMillis() - s) + "ms");
+		
 		return articles;
 	}
-	
-	public  List<Article> queryArticleTitle() throws Exception {
+
+	private List<Article> queryArticleTitle() throws Exception {
 		
 		final URL url = new URL("https://tw.news.yahoo.com/society/archive/");
 		
@@ -61,7 +78,7 @@ public class CrawArticleServiceImpl {
 		return list;
 	}
 
-	public  List<Article> queryArticleContent(List<Article> newList)
+	private  List<Article> queryArticleContent(List<Article> newList)
 			throws Exception {
 
 		for (Article article : newList) {
@@ -82,6 +99,11 @@ public class CrawArticleServiceImpl {
 		CrawArticleServiceImpl service = new CrawArticleServiceImpl();
 		List<Article> listTitle = service.queryArticleTitle();
 		listTitle = service.queryArticleContent(listTitle);
+		
+		for (Article article : listTitle) {
+			System.out.print(article.getTitle());
+			System.out.println("\t"+article.getCreateDate());
+		}
 		
 		System.out.println((System.currentTimeMillis() - s) + " ms");
 		
