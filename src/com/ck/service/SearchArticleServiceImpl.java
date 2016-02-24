@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class SearchArticleServiceImpl implements SearchArticleService {
 	
 	Client client = ElasticUtil.getClient();
-	CrawArticleServiceImpl crawlService = new CrawArticleServiceImpl();
+	CrawlArticleServiceImpl crawlService = new CrawlArticleServiceImpl();
 
 	private static String INDEX = "es";
 	private static String TYPE = "article";

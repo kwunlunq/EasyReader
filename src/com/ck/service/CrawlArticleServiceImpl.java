@@ -15,7 +15,7 @@ import org.jsoup.nodes.Element;
 
 import com.ck.pojo.Article;
 
-public class CrawArticleServiceImpl {
+public class CrawlArticleServiceImpl {
 
 	/**
 	 * 到網站上擷取資料
@@ -96,7 +96,7 @@ public class CrawArticleServiceImpl {
 		System.out.println("Start");
 		long s = System.currentTimeMillis();
 		
-		CrawArticleServiceImpl service = new CrawArticleServiceImpl();
+		CrawlArticleServiceImpl service = new CrawlArticleServiceImpl();
 		List<Article> listTitle = service.queryArticleTitle();
 		listTitle = service.queryArticleContent(listTitle);
 		
