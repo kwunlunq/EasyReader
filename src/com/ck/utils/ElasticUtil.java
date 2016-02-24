@@ -1,13 +1,12 @@
-package com.ck.service;
+package com.ck.utils;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.Map;
 
-import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
+import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 
 public class ElasticUtil {
@@ -25,6 +24,8 @@ public class ElasticUtil {
 			synchronized (ElasticUtil.class) {
 				if (client == null) {
 					try {
+//			            Settings settings = ImmutableSettings.settingsBuilder()
+//			                    .put("cluster.name", "elasticsearch").build();
 						Client tmpClient = TransportClient.builder().build()
 								.addTransportAddress(new InetSocketTransportAddress(
 												InetAddress.getByName("127.0.0.1"), 9300));
@@ -67,6 +68,7 @@ public class ElasticUtil {
 	public static String getById(String index, String type, String id) {
 		return client.prepareGet(index, type, id).get().getSource().toString();
 	}
+	
 
 	/**
 	 * 關閉連線

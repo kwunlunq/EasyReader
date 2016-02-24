@@ -8,6 +8,9 @@ public class Article {
 	private String title;
 	private int category;
 	private String content;
+	private int id;
+	private String href;
+	private Date date;
 	
 	/**
 	 * @return the author
@@ -68,5 +71,41 @@ public class Article {
 	 */
 	public void setContent(String content) {
 		this.content = content;
+	}
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+	/**
+	 * @return the href
+	 */
+	public String getHref() {
+		return href;
+	}
+	/**
+	 * @param href the href to set
+	 */
+	public void setHref(String href) {
+		this.href = href;
+	}
+	/**
+	 * @return the date
+	 */
+	public Date getDate() {
+		return date;
+	}
+	/**
+	 * @param date the date to set
+	 */
+	public void setDate(Date date) {
+		this.date = date;
 	}
 }
