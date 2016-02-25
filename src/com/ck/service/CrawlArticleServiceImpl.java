@@ -15,7 +15,7 @@ import org.jsoup.nodes.Element;
 
 import com.ck.pojo.Article;
 
-public class CrawlArticleServiceImpl {
+public class CrawlArticleServiceImpl implements CrawlArticleService{
 
 	/**
 	 * 到網站上擷取資料

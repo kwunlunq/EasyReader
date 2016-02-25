@@ -23,7 +23,6 @@ public class SearchArticleServiceImpl implements SearchArticleService {
 	
 	@Autowired
 	private CrawlArticleService crawlService;
-	//CrawlArticleServiceImpl crawlService = new CrawlArticleServiceImpl();
 
 	private static String INDEX = "es";
 	private static String TYPE = "article";
